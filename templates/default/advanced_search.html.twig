@@ -40,7 +40,9 @@
     </div>
 
     {% if books is not empty %}
-        {% block table %}{{ parent() }}{% endblock %}
+        {% block table %}
+            {{ parent() }}
+        {% endblock %}
     {% endif %}
 </div>
 {% endblock %}
