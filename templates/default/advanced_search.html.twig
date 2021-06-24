@@ -1,0 +1,46 @@
+{% extends 'default/search.html.twig' %}
+
+{% block title %}Biblioteka X - advanced search{% endblock %}
+
+{% block body %}
+<div>
+    {% if app.flashes('success') is defined %}
+        {% for message in app.flashes('success') %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+
+    <div class="col-md-6 offset-md-3">
+        {{ form_start(form) }}
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(form) }}
+            </div>
+
+            <div class="row">
+                {{ form_row(form.findby1) }}
+                {{ form_row(form.search1) }}
+
+                {{ form_row(form.logic1) }}
+                {{ form_row(form.findby2) }}
+                {{ form_row(form.search2) }}
+
+                {{ form_row(form.logic2) }}
+                {{ form_row(form.findby3) }}
+                {{ form_row(form.search3) }}
+
+                {{ form_row(form.logic3) }}
+                {{ form_row(form.findby4) }}
+                {{ form_row(form.search4) }}
+            </div>
+            <div class="row">
+                {{ form_row(form.submit) }}
+            </div>
+            {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    {% if books is not empty %}
+        {% block table %}{{ parent() }}{% endblock %}
+    {% endif %}
+</div>
+{% endblock %}

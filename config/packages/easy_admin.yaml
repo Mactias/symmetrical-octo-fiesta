@@ -1,0 +1,7 @@
+# config/packages/easy_admin.yaml
+easy_admin:
+    entities:
+        Books:
+            class: App\Entity\Book
+            list:
+                dql_filter: 'entity.loan = 1'

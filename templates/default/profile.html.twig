@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - profile{% endblock %}
+
+{% block body %}
+<div>
+    {% if app.flashes('resend_email_success') is defined %}
+        <div>
+        {% for message in app.flashes('resend_email_success') %}
+            {{ message }}
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if app.flashes('success') is defined %}
+        <div>
+        {% for message in app.flashes('success') %}
+            {{ message }}
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if not app.user.isVerified %}
+        <a href="{{ path('resendEmail') }}">Resend email verification</a>
+    {% endif %}
+
+    <div>
+        <p>Edit your account settings <a href="{{ path('edit_user') }}">Edit</a></p>
+        <p>Change your password <a href="{{ path('change_password') }}">Change Password</a></p>
+        <ul>
+            <li><b>Email:</b> {{ app.user.getEmail }}</li>
+            <li><b>Forename:</b> {{ app.user.getForename }}</li>
+            <li><b>Surname:</b> {{ app.user.getSurname}}</li>
+            <li><b>Date of Birth:</b> {{ app.user.getDateOfBirth.format('d-m-Y') }}</li>
+            <li><b>Place of Birth:</b> {{ app.user.getPlaceOfBirth }}</li>
+            <li><b>PESEL:</b> {{ app.user.getPESEL }}</li>
+        <ul>
+    </div>
+    {% if app.user.getBooks is empty %}
+        <div>
+            <p>You do not loaned any book yet.</p>
+        </div>
+    {% else %}
+        <div>
+            <h3>Loaned Books</h3>
+            {% for book in app.user.getBooks %}
+                <b>Title:</b> <a href="{{ path('show_book', {slug: book.getId}) }}">{{ book.getTitle }}</a> | <b>Return:</b> {{ book.getReturnDate.format('m-d-Y') }}<hr>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

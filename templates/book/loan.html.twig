@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+<div>
+    <a href="{{ path('show_book', {'slug': book.getId}) }}">back</a>
+    <div>
+        <h2>{{ book.getTitle }}</h2>
+        {{ book.getPublisher }}, {{ book.getPublicationYear }}
+    </div>
+    <div>
+        Authors: {{ book.getAuthor }}
+    </div>
+    <div>
+        {% for genre in book.getGenre %}
+            {{ genre }}
+        {% endfor %}
+    </div>
+    <div>
+        {% for subject in book.getSubject %}
+            {{ subject }}
+        {% endfor %}
+    </div>
+    <div>
+        ISBN: {{ book.getISBN }}
+    </div>
+</div>
+<div>
+    <p>Are you sure to loan this book?</p>
+    {{ form(form) }}
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.flashes('success') is defined %}
+        {% for message in app.flashes('success') %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+
+    {% if app.flashes('verify_email_error') is defined %}
+        {% for message in app.flashes('verify_email_error') %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <img src="{{ asset('img/logo_transparent_sm.png') }}" alt="logo" id="image-logo" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+            {{ form(form) }}
+        </div>
+    </div>
+{% endblock %}

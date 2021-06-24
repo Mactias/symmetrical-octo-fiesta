@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - simple search{% endblock %}
+
+{% block body %}
+    {% if app.flashes('success') is defined %}
+        {% for message in app.flashes('success') %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+
+    <div class="container">
+        <div class="col-md-6 offset-md-3">
+        {{ form(form) }}
+        </div>
+    </div>
+
+    {% if books is not empty %}
+        {% block table %}
+        <div id="books-result" class="fs-6">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Author</th> 
+                    <th>Publisher</th>
+                    <th>P. Year</th>
+                    <th>ISBN</th>
+                </tr>
+                {% for book in books %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><a href="{{ path('show_book', {'slug': book.getId}) }}">{{ book.getTitle }}</a></td>
+                    <td>{{ book.getAuthor }}</td>
+                    <td>{{ book.getPublisher }}</td>
+                    <td>{{ book.getPublicationYear }}</td>
+                    <td>{{ book.getISBN }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

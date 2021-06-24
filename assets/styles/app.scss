@@ -1,0 +1,46 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: lightgray;
+}
+
+div {
+    .set-grid {
+        display: grid;
+    }
+
+    #show-loan-info {
+        border: 2px solid;
+        background-color: lemonchiffon;
+    }
+
+    #books-result {
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            background-color: rgb(191, 191, 107);
+        }
+
+        tr {
+            background-color: white;
+
+            &:nth-child(even) {
+                background-color: rgb(252,252,220);
+            }
+        }
+
+    }
+}
