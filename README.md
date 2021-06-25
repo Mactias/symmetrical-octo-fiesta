@@ -1,15 +1,15 @@
-Project library.
+Project library.<br>
 You can try it on the site: http://biblioteczka1.herokuapp.com
 
 <h2>User Logins</h2>
 admin<br>
-email: jasminenaylor@jourrapide.com
-password: 123456
+email: jasminenaylor@jourrapide.com<br>
+password: 123456<br>
 <br>
 user<br>
-email: charlienixon@gmail.com
-password: 123456
-
+email: charlienixon@gmail.com<br>
+password: 123456<br>
+<br>
 <h2>Features:</h2>
 <ul>
     <li>login</li>
