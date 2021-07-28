@@ -19,6 +19,8 @@ class BookFixtures extends Fixture
         /* $book->setISBN(''); */
 
         /* $manager->persist($book); */
+        $cover = "img/covers";
+        $nocover = "${cover}/no_cover.jpg";
 
         $book = new Book();
         $book->setTitle("Kongres futurologiczny ; Opowiadania Ijona Tichego / Stanisław Lem.");
@@ -28,6 +30,7 @@ class BookFixtures extends Fixture
         $book->setGenre(['Opowiadania i nowele',]);
         $book->setISBN('9788375525048');
         $book->setLoan(0);
+        $book->setCover("${cover}/kongres_futurologiczny_lem.jpg");
 
         $manager->persist($book);
 
@@ -39,6 +42,7 @@ class BookFixtures extends Fixture
         $book->setGenre(['Powieść polska',]);
         $book->setISBN('9788375525046');
         $book->setLoan(0);
+        $book->setCover("${cover}/solaris_lem.jpg");
 
         $manager->persist($book);
 
@@ -49,6 +53,7 @@ class BookFixtures extends Fixture
         $book->setPublicationYear('2011');
         $book->setSubject(['Kultura Łódź konferencje', 'Instytucje kultury Łódź konferencje',]);
         $book->setLoan(0);
+        $book->setCover($nocover);
 
         $manager->persist($book);
 
@@ -61,6 +66,7 @@ class BookFixtures extends Fixture
         $book->setGenre(['Podręczniki',]);
         $book->setISBN('8372060327');
         $book->setLoan(0);
+        $book->setCover("${cover}/wprowadzenie_do_ekonomii_wos.jpg");
 
         $manager->persist($book);
 
@@ -73,6 +79,7 @@ class BookFixtures extends Fixture
         $book->setGenre(['Podręczniki',]);
         $book->setISBN('8390976142');
         $book->setLoan(0);
+        $book->setCover("${cover}/ekonomia_zarys_problematyki_gsroslak.jpg");
 
         $manager->persist($book);
 
@@ -85,6 +92,7 @@ class BookFixtures extends Fixture
         $book->setGenre(['Podręczniki',]);
         $book->setISBN('8374261957');
         $book->setLoan(0);
+        $book->setCover($nocover);
 
         $manager->persist($book);
 
@@ -95,10 +103,11 @@ class BookFixtures extends Fixture
         $book->setPublicationYear('2009');
         $book->setSubject(['Business Intelligence', 'Decyzje gospodarka', 'Inteligencja sztuczna stosowanie', 'Systemy informatyczne zarządzania']);
         $book->setLoan(0);
+        $book->setCover($nocover);
 
         $manager->persist($book);
 
         $manager->flush();
-        $manager->clear(Book::class);
+        $manager->clear();
     }
 }

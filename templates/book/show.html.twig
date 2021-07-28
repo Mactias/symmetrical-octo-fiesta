@@ -3,7 +3,9 @@
 {% block title %} {{ parent() }} - {{ book.getTitle }}{% endblock %}
 
 {% block body %}
-    <a href="{{ referer }}">Back</a><br>
+    <div>
+        <a href="{{ referer }}">Back</a><br>
+    </div>
 
     <div id="show-loan-info" class="p-1 m-2">
         {% if not app.user %}
@@ -17,27 +19,36 @@
         {% endif %}
     </div>
 
-    <div>
-        <b>Title:</b> {{ book.getTitle }}<br>
-        <b>Authors:</b> {{ book.getAuthor }}<br>
-    <div>
-        {% if book.getGenre %}
-            <b>Genre:</b><br>
-            {% for genre in book.getGenre %}
-                {{ genre }}
-            {% endfor %}
-        {% endif %}
+    <div id="book-description" class="row">
+        <div class="col-sm-4">
+            <img src="{{ asset(book.getCover) }}" alt="cover" id="cover" class="img-fluid">
+        </div>
+
+        <div class="col-sm-8">
+        <div>
+            <b>Title:</b> {{ book.getTitle }}<br>
+            <b>Authors:</b> {{ book.getAuthor }}<br>
+            {% if book.getGenre %}
+                <b>Genre:</b><br>
+                {% for genre in book.getGenre %}
+                    {{ genre }}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {% if book.getSubject %}
+                <b>Subject:</b><br>
+                {% for subject in book.getSubject %}
+                    {{ subject }}<br>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {% if book.getISBN %}
+                <b>ISBN:</b> {{ book.getISBN }}
+            {% endif %}
+        </div>
+        </div>
     </div>
-    <div>
-        {% if book.getSubject %}
-            <b>Subject:</b><br>
-            {% for subject in book.getSubject %}
-                {{ subject }}<br>
-            {% endfor %}
-        {% endif %}
-    </div>
-        {% if book.getISBN %}
-            <b>ISBN:</b> {{ book.getISBN }}
-        {% endif %}
     </div>
 {% endblock %}

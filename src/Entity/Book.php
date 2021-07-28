@@ -71,6 +71,11 @@ class Book
      */
     private $loanedBy;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cover;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -192,6 +197,18 @@ class Book
     public function setLoanedBy(?User $loanedBy): self
     {
         $this->loanedBy = $loanedBy;
+
+        return $this;
+    }
+
+    public function getCover(): ?string
+    {
+        return $this->cover;
+    }
+
+    public function setCover(string $cover): self
+    {
+        $this->cover = $cover;
 
         return $this;
     }
