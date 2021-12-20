@@ -21,13 +21,14 @@ class BookCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            'title',
-            'author',
+            Field::new('title'),
+            Field::new('author'),
             Field::new('publisher'),
             Field::new('publicationYear')->setLabel('P. Year'),
             Field::new('subject'),
             Field::new('genre'),
             Field::new('isbn'),
+            Field::new('cover')->hideOnIndex(),
 
             FormField::addPanel('Loan Details'),
             AssociationField::new('loanedBy')->hideOnIndex(),
